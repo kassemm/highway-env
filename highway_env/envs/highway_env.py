@@ -97,8 +97,8 @@ class HighwayEnv(AbstractEnv):
             else self.vehicle.lane_index[2]
         scaled_speed = utils.lmap(self.vehicle.speed, self.config["reward_speed_range"], [0, 1])
         reward = \
-            + self.config["collision_reward"] * self.vehicle.crashed \
-            + self.config["right_lane_reward"] * lane / max(len(neighbours) - 1, 1) \  #keep right lane preference in the reward scheme
+            + self.config["collision_reward"] * self.vehicle.crashed 
+            + self.config["right_lane_reward"] * lane / max(len(neighbours) - 1, 1)   #keep right lane preference in the reward scheme
             + self.config["high_speed_reward"] * np.clip(scaled_speed, 0, 1)
             + self.config["lane_change_reward"] * lane_change
             
